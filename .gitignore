@@ -1,0 +1,18 @@
+#Demo Makeshift "Project" Folder will get reworked into an Project System
+/demo/
+
+*.log
+*.class
+
+#JVM Crash Logs
+hs_err_pid*
+replay_pid*
+
+# Build stuff
+**/bin
+
+
+
+#Eclipse data stuff
+/.metadata/
+**/.settings
