@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="Lib/joml-1.10.3.jar" sourcepath="Lib/joml-1.10.3-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/joml-1.10.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl.jar" sourcepath="Lib/lwjgl-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-glfw.jar" sourcepath="Lib/lwjgl-glfw-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/BF/Documents/Eng/PXLEng/Lib/lwjgl-glfw-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-glfw-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-lz4.jar" sourcepath="Lib/lwjgl-lz4-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-lz4-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-lz4-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-nuklear.jar" sourcepath="Lib/lwjgl-nuklear-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-nuklear-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-nuklear-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-opengl.jar" sourcepath="Lib/lwjgl-opengl-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-opengl-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-opengl-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-shaderc.jar" sourcepath="Lib/lwjgl-shaderc-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-shaderc-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-shaderc-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-spvc.jar" sourcepath="Lib/lwjgl-spvc-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-spvc-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-spvc-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-stb.jar" sourcepath="Lib/lwjgl-stb-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-stb-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-stb-natives-windows.jar"/>
+	<classpathentry kind="lib" path="Lib/lwjgl-yoga.jar" sourcepath="Lib/lwjgl-yoga-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-yoga-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Lib/lwjgl-yoga-natives-windows.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JBox2D"/>
+	<classpathentry kind="lib" path="Lib/gson-2.9.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

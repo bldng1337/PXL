@@ -1,0 +1,14 @@
+package me.pxl.Serialize;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+@Retention(RUNTIME)
+@Target(FIELD)
+public @interface DynamicList {
+	String Elements() default "";
+	Class<?> AssetType() default Object.class;
+}
