@@ -1,0 +1,15 @@
+{
+    "java.project.referencedLibraries": [
+        "c:\\Users\\BF\\Documents\\Projects\\PXL\\Engine.jar",
+        "c:\\Users\\BF\\Documents\\Projects\\PXL\\PXLEng\\Lib\\joml-1.10.3.jar"
+    ],
+    "java.project.outputPath": "out",
+    "java.project.sourcePaths": [
+        ".",
+        "../PXLEng/src",
+        "../Editor/src",
+        "../JBox2D/src"
+    ],
+    "java.autobuild.enabled": true,
+    "java.templates.fileHeader": ["//${type_name}","//Date:${date}","//Author:${user}"]
+}
