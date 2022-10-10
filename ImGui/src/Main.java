@@ -1,13 +1,17 @@
 import java.awt.Desktop;
 import java.net.URI;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.lwjgl.system.MemoryUtil;
 
 import ImGui.ImUI;
+import ImGui.sequencer.Sequencer;
+import ImGui.sequencer.Sequencer.Sequence;
 import imgui.ImGui;
 import imgui.extension.imnodes.ImNodes;
 import imgui.extension.imnodes.ImNodesContext;
@@ -34,26 +38,35 @@ import me.pxl.Engine;
 import me.pxl.ECS.Component;
 
 public class Main {
-    
+    float[] f=new float[20];
 	public Main() {
 		System.setProperty("java.library.path", "C:\\Users\\BF\\git\\Prodigium\\Editor\\libs");
 		Engine e=Engine.getEngine();
 		Object o=new Component();
-		
+		for(int i=0;i<20;i++) {
+			f[i]=1;
+		}
 		@SuppressWarnings("unused")
 		ImUI ui=new ImUI(e,()->{
 			
-			ImGui.showDemoWindow();
-			ImBoolean i=new ImBoolean(true);
-			Main.show(i);
-			Main.show(i, g);
-			Main.showDrag(i);
-			Main.showEdit(i);
-			Main.showNode(i, g2);
-			Main.showText(i);
+//			ImGui.showDemoWindow();
+//			ImBoolean i=new ImBoolean(true);
+//			Main.show(i);
+//			Main.show(i, g);
+//			Main.showDrag(i);
+//			Main.showEdit(i);
+//			Main.showNode(i, g2);
+//			Main.showText(i);
 			
-			
-			
+			 if (ImGui.begin("Sequencer Test")) {
+				 List<Sequence> ltest=new ArrayList<>();
+				 ltest.add(new Sequence("yeet",0,100));
+				 ltest.add(new Sequence("ya",120,300));
+				 Sequencer.beginSequence(ltest, 40,f);
+				 
+				 Sequencer.endSequence(f);
+			 }
+			 ImGui.end();
 		});
 		e.update();
 		System.exit(0);
@@ -412,8 +425,8 @@ public class Main {
             ImGui.text(cposX + "/" + cposY + " " + EDITOR.getTotalLines() + " lines | " + overwrite + " | " + canUndo);
 
             EDITOR.render("TextEditor");
-            ImGui.end();
         }
+        ImGui.end();
     }
     
     private static final ImNodesContext NCONTEXT = new ImNodesContext();

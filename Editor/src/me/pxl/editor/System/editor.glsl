@@ -16,11 +16,13 @@ void main(){
 #endif
 #if FRAG
 layout (location = 0) out vec4 o_Color;
+layout (location = 1) out vec4 o_Occ;
 
 in vec2 pos;
 
 void main()
 {
+	o_Occ=vec4(0.0f);
     float col=mod(floor(-pos.x/SIZE+floor(-pos.y/SIZE)),2.0f);
     o_Color = vec4(mix(COL1,COL2,col),1.0);
     if(floor(pos.x/2)==0)

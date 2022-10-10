@@ -10,7 +10,7 @@
 	<classpathentry kind="lib" path="Libs/imgui-binding-1.86.4.jar" sourcepath="Libs/imgui-binding-1.86.4-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/ImGuiTest/Libs/imgui-binding-1.86.4-javadoc.jar!/"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ImGuiTest/Libs"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ImGui/Libs"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="Libs/imgui-lwjgl3-1.86.4.jar" sourcepath="Libs/imgui-lwjgl3-1.86.4-sources.jar">

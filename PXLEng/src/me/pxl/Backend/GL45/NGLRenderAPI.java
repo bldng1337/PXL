@@ -78,21 +78,21 @@ public class NGLRenderAPI extends RenderAPI{
         
         glfwMakeContextCurrent(win);
         GLCapabilities caps      = GL.createCapabilities();
-        debugProc = GLUtil.setupDebugMessageCallback();
+//        debugProc = GLUtil.setupDebugMessageCallback();
         screen=new NGLFrameBuffer();
-        if (caps.OpenGL43) {
-            GL43.glDebugMessageControl(GL43.GL_DEBUG_SOURCE_API, GL43.GL_DEBUG_TYPE_OTHER, GL43.GL_DEBUG_SEVERITY_NOTIFICATION, (IntBuffer)null, true);
-        } else if (caps.GL_KHR_debug) {
-            KHRDebug.glDebugMessageControl(
-            		GL45.GL_DONT_CARE,
-            		GL45.GL_DONT_CARE,
-            		GL45.GL_DONT_CARE,
-                (IntBuffer)null,
-                true
-            );
-        } else if (caps.GL_ARB_debug_output) {
-            glDebugMessageControlARB(GL45.GL_DONT_CARE , GL45.GL_DONT_CARE , GL45.GL_DONT_CARE , (IntBuffer)null, true);
-        }
+//        if (caps.OpenGL43) {
+//            GL43.glDebugMessageControl(GL43.GL_DEBUG_SOURCE_API, GL43.GL_DEBUG_TYPE_OTHER, GL43.GL_DEBUG_SEVERITY_LOW, (IntBuffer)null, true);
+//        } else if (caps.GL_KHR_debug) {
+//            KHRDebug.glDebugMessageControl(
+//            		GL45.GL_DONT_CARE,
+//            		GL45.GL_DONT_CARE,
+//            		GL45.GL_DEBUG_SEVERITY_LOW,
+//                (IntBuffer)null,
+//                true
+//            );
+//        } else if (caps.GL_ARB_debug_output) {
+//            glDebugMessageControlARB(GL45.GL_DONT_CARE , GL45.GL_DONT_CARE , GL45.GL_DEBUG_SEVERITY_LOW , (IntBuffer)null, true);
+//        }
         glEnable(GL_BLEND);
         glBlendEquation(GL_FUNC_ADD);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

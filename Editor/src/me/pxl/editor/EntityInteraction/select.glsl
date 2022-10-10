@@ -17,14 +17,18 @@
     #endif
     #if FRAG
     layout (location = 0) out vec4 o_Color;
-
+	layout (location = 1) out vec4 o_Occ;
     uniform vec2 size;
     in Vertexdata vdata;
 
     void main()
     {
         o_Color=vec4(0.0f);
+		o_Occ=vec4(0.0f);
         if(vdata.t_coord.x>size.x-WIDTH||vdata.t_coord.x<WIDTH||vdata.t_coord.y>size.y-WIDTH||vdata.t_coord.y<WIDTH)
             o_Color=vec4(vec3(0.0f),1.0f);
+		else
+			discard;
+		
     }
     #endif
