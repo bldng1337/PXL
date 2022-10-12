@@ -27,8 +27,17 @@ import me.pxl.Backend.Generic.RenderAPI;
 import me.pxl.Event.EventTarget;
 import me.pxl.Event.Events.EPostRender;
 import me.pxl.Utils.IOUtils;
-
+/**
+ * Asset Manager has the authority over all Assets and manages loading and unloading via Reference Counting {@link https://en.wikipedia.org/wiki/Reference_counting#:~:text=In%20computer%20science%2C%20reference%20counting,that%20are%20no%20longer%20needed.}
+ * @author bldng
+ *
+ */
 public abstract class AssetManager {
+	/**
+	 * Job referencing an Asset
+	 * @author bldng
+	 *
+	 */
 	abstract class AssetJob{
 		abstract void run();
 		abstract UUID getRefAsset();
@@ -62,17 +71,22 @@ public abstract class AssetManager {
 			loadAsset(u);
 		}
 	}
-	
+	/**
+	 * Job Worker Queue
+	 */
 	volatile BlockingQueue<AssetJob> jobqueue=new ArrayBlockingQueue<>(200);
-	//Finalize Queue
-	volatile Queue<UUID> finalq=new ArrayBlockingQueue<>(100);//
-	
-	
-	
-//	BlockingQueue<Tuple<Asset,UUID>> aqueue=new ArrayBlockingQueue<>(100);//Reload Queue
-//	BlockingQueue<UUID> queue=new ArrayBlockingQueue<>(100);//Load queue
-	
+	/**
+	 * Render Thread Worker Queue
+	 */
+	volatile Queue<UUID> finalq=new ArrayBlockingQueue<>(100);
+	/**
+	 * Map of all Assets in Memory
+	 */
 	volatile HashMap<UUID,Asset> assets=new HashMap<>();
+	/**
+	 * Map of all Asset Paths
+	 * TODO: move into Specialised Developement AssetManager
+	 */
 	volatile HashMap<UUID,String> softref=new HashMap<>();
 	
 	protected Path p;
@@ -94,7 +108,7 @@ public abstract class AssetManager {
 		athis=this;
 		
 		
-		//StreamThread
+		//Initialize StreamThread
 		long win=GLFW.glfwCreateWindow(1, 1, "", MemoryUtil.NULL, mainwin);
         if (win == MemoryUtil.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
@@ -105,14 +119,18 @@ public abstract class AssetManager {
 		
 		
 		//Make AssetPath
-		passets=p.resolve("Assets."+CONFIG_FILE_ENDING);//TODO: Why is this in the Main AssetManager?
+		passets=p.resolve(".Assets."+CONFIG_FILE_ENDING);//TODO: Why is this in the Main AssetManager?
 	}
 	
+	/**
+	 * Load Assets off thread
+	 * @param UUID Assets to be loaded
+	 */
 	public void softLoad(UUID... ul) {
 		for(UUID u:ul)
 			jobqueue.add(new LoadJob(u));
 	}
-	
+	//Internal synchronized getters/setters for the Maps
 	protected synchronized <T> T getswap(Function<Queue<UUID>,T> a) {
 		return a.apply(finalq);
 	}
@@ -128,13 +146,20 @@ public abstract class AssetManager {
 	protected synchronized void userefs(Consumer<HashMap<UUID,String>> a) {
 		a.accept(softref);
 	}
-	
+	/**
+	 * Registers a new Asset Type to be created
+	 * @param c Class of the Asset Type
+	 */
 	@SuppressWarnings("unchecked")
 	public void registerAssetType(@SuppressWarnings("rawtypes") Class c) {
 		atypes.add(c);
 	}
 	private List<Class<Asset>> atypes=new ArrayList<>();
-	
+	/**
+	 * Get type of Asset from AssetPath
+	 * @param p Path
+	 * @return Type of Asset
+	 */
 	@SuppressWarnings("unchecked")
 	public Class<Asset> getType(Path p){
 		for(Class<Asset> c:atypes) {
@@ -155,14 +180,22 @@ public abstract class AssetManager {
 		}
 		return null;
 	}
-	
+	/**
+	 * Get base type of a Asset
+	 * @param e Clas of Asset
+	 * @return BaseClass
+	 */
 	public Class<?> getType(Class<?> e){
 		while(!e.getSuperclass().getSimpleName().equals(Asset.class.getSimpleName()))
 			e=e.getSuperclass();
 		return e;
 	}
 	
-	
+	/**
+	 * Get type of Asset from AssetPath
+	 * @param p Path
+	 * @return Type of Asset
+	 */
 	private Class<Asset> getAssetType(Path p) {
 		for(Class<Asset> c:atypes) {
 			try {
@@ -178,7 +211,7 @@ public abstract class AssetManager {
 		}
 		return null;
 	}
-	
+	//Internal resolves location of an Asset and loads it
 	protected Asset search(UUID u) {
 		Path p=Paths.get(getrefs((m)->m.get(u)));
 		if(p==null) {
@@ -200,7 +233,10 @@ public abstract class AssetManager {
 		a.getAs().load(p);
 		return a;
 	}
-	
+	/**
+	 * Reloads an Asset
+	 * @param u Asset to be reloaded
+	 */
 	public void reload(UUID u) {
 		if(isAssetLoaded(u)) {
 //			if(!aqueue.contains(t)) {
@@ -212,7 +248,10 @@ public abstract class AssetManager {
 		}
 	}
 	
-	
+	/**
+	 * Loads an Asset into memory
+	 * @param u Asset to be loaded
+	 */
 	protected synchronized void loadAsset(UUID u) {
 		if(getassets((map)->map.containsKey(u)))
 			return;
@@ -226,6 +265,11 @@ public abstract class AssetManager {
 	}
 	
 	//TODO:Dont like it that registerAsset is in the Assetmanager used in production
+	/**
+	 * regsisters an Asset from an Path and gives it an UUID
+	 * @param p
+	 * @return
+	 */
 	public UUID registerAsset(Path p) {
 		Path rp=this.p.resolve(p).normalize();
 		if(softref.containsValue(rp.toString()))
@@ -248,7 +292,11 @@ public abstract class AssetManager {
 	public Set<Entry<UUID, String>> getRefs() {
 		return this.getrefs((m)->m.entrySet());
 	}
-	
+	/**
+	 * get Reference to an Asset
+	 * @param u Asset
+	 * @return Asset
+	 */
 	@SuppressWarnings("unchecked")
 	protected <T extends Asset> T  getLoadingRef(UUID u) {
 		if(!isAssetLoaded(u))
@@ -264,7 +312,7 @@ public abstract class AssetManager {
 			return null;
 		}
 	}
-	
+	//Internal
 	protected void finalizeRef(Asset t) {
 		if(t.getAs().s==State.LOADING) {
 			t.update();
@@ -273,7 +321,11 @@ public abstract class AssetManager {
 		}
 	}
 	
-	
+	/**
+	 * get Reference to an Asset
+	 * @param u Asset
+	 * @return Asset
+	 */
 	@SuppressWarnings("unchecked")
 	public <T extends Asset> T getRef(UUID u){
 		if(!isAssetLoaded(u))
@@ -294,21 +346,30 @@ public abstract class AssetManager {
 			return null;
 		}
 	}
-	
+	/**
+	 * Checks if Asset is Loaded
+	 * @param u UUID of Asset
+	 * @return if aset is loaded
+	 */
 	public boolean isAssetLoaded(UUID u) {
 		return getassets((m)->m.containsKey(u));
 	}
-	
+	/**
+	 * Waits until all given assets are loaded
+	 */
 	public void waitforAsset(UUID... ul) {
 		for(UUID u:ul)
 			while(!this.isAssetLoaded(u))
 				try {
-					Thread.sleep(1);
+					Thread.sleep(10);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 	}
-	
+	/**
+	 * Returns an Reference
+	 * @param t Asset to be returned
+	 */
 	public void returnRef(UUID u) {
 		Asset t=getassets((map)->map.get(u));
 		t.getAs().references--;

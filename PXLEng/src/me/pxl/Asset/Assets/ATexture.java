@@ -13,7 +13,11 @@ import me.pxl.Asset.Asset;
 import me.pxl.Backend.Generic.RenderAPI;
 import me.pxl.Backend.Generic.Texture;
 import me.pxl.Backend.Generic.Texture.Textureformat;
-
+/**
+ * Class holding as Texture as Asset
+ * @author bldng
+ *
+ */
 public class ATexture extends Asset{
 	public static String[] ext={"png","jpg"};
 	public class DTexture extends Asset.DataAsset{

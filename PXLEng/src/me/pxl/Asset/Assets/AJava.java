@@ -9,7 +9,11 @@ import java.nio.file.Path;
 import me.pxl.Asset.Asset;
 import me.pxl.Backend.Generic.RenderAPI;
 import me.pxl.Utils.Utils;
-
+/**
+ * Class holding Java Code as Asset
+ * @author bldng
+ *
+ */
 public class AJava extends Asset{
 	public static String[] ext={"jar","out"};
 	public class DJava extends Asset.DataAsset{

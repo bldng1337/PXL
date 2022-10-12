@@ -5,7 +5,11 @@ import java.nio.file.Path;
 import me.pxl.Asset.Asset;
 import me.pxl.Backend.Generic.RenderAPI;
 import me.pxl.Utils.IOUtils;
-
+/**
+ * Class holding Scenes as Asset
+ * @author bldng
+ *
+ */
 public class AScene extends Asset{
 	public static String[] ext={"scene"};
 	public class DScene extends Asset.DataAsset{

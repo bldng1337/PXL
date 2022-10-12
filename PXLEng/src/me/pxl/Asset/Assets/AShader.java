@@ -6,7 +6,11 @@ import me.pxl.Asset.Asset;
 import me.pxl.Backend.Generic.RenderAPI;
 import me.pxl.Backend.Generic.Shader;
 import me.pxl.Utils.IOUtils;
-
+/**
+ * Class holding Shader as Asset
+ * @author bldng
+ *
+ */
 public class AShader extends Asset{
 	public static String[] ext={"glsl"};
 	public class DShader extends Asset.DataAsset {

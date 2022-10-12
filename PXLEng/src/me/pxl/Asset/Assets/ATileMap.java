@@ -17,7 +17,11 @@ import me.pxl.Serialize.Serialization;
 import me.pxl.Serialize.VirtualEnum;
 import me.pxl.Serialize.JSON.JSONDeserializeAdapter;
 import me.pxl.Utils.IOUtils;
-
+/**
+ * Class holding a TileMap as Texture
+ * @author bldng
+ *
+ */
 public class ATileMap extends ATexture{
 	public static String[] ext={"tile"};	
 	public class DTileMap extends ATexture.DTexture{

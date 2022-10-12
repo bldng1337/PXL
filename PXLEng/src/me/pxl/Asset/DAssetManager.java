@@ -27,6 +27,7 @@ import java.util.UUID;
 
 public class DAssetManager extends AssetManager{
 	Path p;
+	//Development Asset Manager
 	public DAssetManager(long mainwin,Path p,RenderAPI r) {
 		super(mainwin,p,r);
 		this.p=p;
@@ -62,6 +63,7 @@ public class DAssetManager extends AssetManager{
 		registerAssetType(AGif.class);
 		registerAssetType(ATileMap.class);
 	}
+	//Reloads Assets that got changed
 	WatchService watchService;
 	WatchKey k;
 	@EventTarget

@@ -4,8 +4,15 @@ import java.nio.file.Path;
 import java.util.UUID;
 
 import me.pxl.Backend.Generic.RenderAPI;
-
+/**
+ * Asset describing an generic Asset
+ * @author bldng
+ *
+ */
 public abstract class Asset{
+	/**
+	 *	
+	 */
 	public static enum State{
 		LOADED,LOADING;
 	}

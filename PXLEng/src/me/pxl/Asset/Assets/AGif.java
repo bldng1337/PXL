@@ -11,7 +11,11 @@ import javax.imageio.stream.ImageInputStream;
 
 import me.pxl.Backend.Generic.RenderAPI;
 import me.pxl.Serialize.Serialization;
-
+/**
+ * Class holding a Animation loaded as Gif
+ * @author bldng
+ *
+ */
 public class AGif extends AAnimation{
 	public static String[] ext={"gif"};
 	
