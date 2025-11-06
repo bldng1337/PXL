@@ -1,38 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="src" output="bin/main" path="src">
 		<attributes>
-			<attribute name="module" value="true"/>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PXLEng"/>
-	<classpathentry kind="lib" path="Libs/imgui-binding-1.86.4.jar" sourcepath="Libs/imgui-binding-1.86.4-sources.jar">
+	<classpathentry kind="src" output="bin/main" path="Libs">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/ImGuiTest/Libs/imgui-binding-1.86.4-javadoc.jar!/"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ImGuiTest/Libs"/>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="Libs/imgui-lwjgl3-1.86.4.jar" sourcepath="Libs/imgui-lwjgl3-1.86.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/ImGuiTest/Libs/imgui-lwjgl3-1.86.4-javadoc.jar!/"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ImGuiTest/Libs"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/PXLEng/Lib/lwjgl-glfw.jar" sourcepath="/PXLEng/Lib/lwjgl-glfw-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/BF/Documents/Eng/PXLEng/Lib/lwjgl-glfw-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/PXLEng/Lib/joml-1.10.3.jar" sourcepath="/PXLEng/Lib/joml-1.10.3-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/joml-1.10.3-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/PXLEng/Lib/lwjgl.jar" sourcepath="/PXLEng/Lib/lwjgl-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/PXLEng/Lib/lwjgl-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="output" path="bin/default"/>
 </classpath>
